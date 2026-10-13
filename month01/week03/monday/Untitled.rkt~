@@ -1,0 +1,79 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname Untitled) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;; List
+
+;; hooson list
+(define no-scores empty)
+
+;;1 elementtei list: 70, daraa n hooson
+(define one-score (cons 70 empty))
+one-score
+
+;; 3 elementtei list: 70, 82, 95
+(define scores(cons 70 (cons 82 (cons 95 empty))))
+
+scores
+
+;; Hamgiin ehnii element oloh
+(first scores)
+(rest scores)
+;; 82 hewleh
+(first (rest scores))
+(empty? scores)
+(cons? scores)
+
+;; Exercises
+;; Ex01
+;; temperatures : List-of-numbers
+;; Dorwon temperature aguulsan list.
+(define temperatures ( cons 18 (cons 22 (cons 25 (cons 33 empty)))))
+
+;;End uuriin todorhoiloltiig bich
+(check-expect (first temperatures)18)
+
+;; Guraw dahi temperaturiig shalgah check-expert bich.
+(check-expect (first (rest (rest temperatures))) 25)
+
+;; Ex02
+;; Daraah list ugugdjee
+(define numbers
+  (cons 12
+    (cons 24
+      (cons 36
+        (cons 48 empty)))))
+;;doorh ilerhiilel buriin ur dung Run darahaas umnu taamaglan bich.
+(check-expect (first numbers)12)
+
+(check-expect (first(rest numbers))24)
+
+(check-expect (first(rest(rest numbers))) 36)
+
+(check-expect (rest numbers)(cons 24
+      (cons 36
+        (cons 48 empty))))
+
+(check-expect (empty? numbers) #f)
+
+(check-expect (cons? numbers) #t)
+
+;; Ex03
+
+(define subjects
+  (cons "Math"
+    (cons "Physics"
+      (cons "Programming"
+        (cons "English" empty)))))
+
+(define (second-subject list)
+  (first (rest list)))
+
+(check-expect
+ (second-subject
+  (cons "Math" (cons "Physics" empty)))
+ "Physics")
+
+(check-expect
+ (second-subject
+  (cons "A" (cons "B" (cons "C" empty))))
+ "B")
