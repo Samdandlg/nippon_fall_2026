@@ -1,0 +1,26 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname debug) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;; 1. Base case байхгүй
+(define (sum-1 l)
+  (+ (first l) (sum-1 (rest l))))
+(check-expect (sum-1 (cons 1 (cons 2 empty))) 3)
+
+;; 2. Base case-ийн утга буруу
+(define (sum-2 l)
+  (cond [(empty? l) 1]
+        [else (+ (first l) (sum-2 (rest l)))]))
+(check-expect (sum-2 (cons 1 (cons 2 empty))) 3)
+
+;; 3. count-items 1-ийн оронд first-ийг нэмж байна
+(define (count-items-3 l)
+  (cond [(empty? l) 0]
+        [else (+ (first l) (count-items-3 (rest l)))]))
+(check-expect (count-items-3 (cons 7 (cons 8 empty))) 2)
+
+;; 4. Recursive call жижиг бодлого дээр очихгүй байна (Stop товч!)
+(define (count-positive-4 l)
+  (cond [(empty? l) 0]
+        [(positive? (first l)) (+ 1 (count-positive-4 (rest l)))]
+        [else (count-positive-4 l)]))
+(check-expect (count-positive-4 (cons 5 (cons -1 empty))) 1)
