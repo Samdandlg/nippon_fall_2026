@@ -1,0 +1,10 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname practice) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "image.rkt" "teachpack" "2htdp")) #f)))
+;; contains? : Number List-of-numbers -> Boolean
+
+
+;; target list дотор байвал #t
+(check-expect (contains? 5 empty) #f)
+(check-expect (contains? 5 (cons 3 (cons 5 (cons 7 empty)))) #t)
+(check-expect (contains? 4 (cons 3 (cons 5 empty))) #f)
