@@ -31,7 +31,17 @@
 
 ;;Ex03
 ;; score-dots : List-of-numbers -> Image
-(define (score-dots score)
+(define (score-dots a)
+  (cond
+    [(empty? a) empty-image]
+    [(>= (first a) 60)
+     (beside (circle 10 "solid" "green")
+             (score-dots (rest a)))]
+    [else
+     (beside (circle 10 "solid" "red")
+             (score-dots (rest a)))]))
+   
+     
 
 ;; оноо бүрийг радиус 10 тойрог болгож зэрэгцүүлнэ: 60+ ногоон, бусад улаан
 (check-expect (score-dots empty) empty-image)
